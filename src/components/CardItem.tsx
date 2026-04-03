@@ -1,52 +1,62 @@
 import cardPlaceholder from "@/assets/cardPlaceholder.png";
+import { CATEGORY_MAP } from "@/config";
 import { Box, Text, Card, Image, Badge, Stack } from "@mantine/core";
-import type { CardItemType } from "@/types/commonTypes";
+import { useNavigate } from "react-router-dom";
 
-function CardItem({
-  card = {
-    id: "0",
-    title: "Название товара",
-    price: "15 000 ₽",
-    category: "Электроника",
-    needsWork: true,
-    image: null,
-  },
-}: {
-  card: CardItemType;
-}) {
+interface Props {
+  id: string;
+  title: string;
+  price: string;
+  category: string;
+  needsRevision: boolean;
+  image: string | null;
+}
+
+function CardItem({ id, title, price, category, needsRevision, image }: Props) {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/ads/${id || 0}`);
+  };
+
   return (
-    <Card key={card.id} w={200} h={268} p={0} withBorder radius="md">
-      {/* Фото */}
+    <Card
+      onClick={handleCardClick}
+      key={id || 0}
+      w={200}
+      h={268}
+      p={0}
+      withBorder
+      radius="md"
+    >
       <Box w={200} h={150} pos="relative">
-        <Image
-          src={card.image || cardPlaceholder}
-          w={200}
-          h={150}
-          alt="Карточка"
-        />
+        <Image src={image || cardPlaceholder} w={200} h={150} alt="Карточка" />
 
-        {/* Категория ровно по центру между картинкой и текстом */}
         <Badge
           pos="absolute"
           bottom={-11}
-          left="50%"
+          left="12px"
+          bg="inherit"
           style={{
-            transform: "translateX(-50%)",
-            width: "111px",
+            width: "fit-content",
             height: "22px",
             fontFamily: "Roboto",
             fontWeight: 400,
             fontSize: "14px",
+            lineHeight: "22px",
+            display: "flex",
+            justifyContent: "start",
+            textTransform: "none",
+            border: "1px solid #D9D9D9",
+            color: "rgba(0, 0, 0, 0.85)",
+            padding: "0 12px",
           }}
-          variant="filled"
-          color="gray"
           radius="sm"
         >
-          {card.category}
+          {CATEGORY_MAP[category] || category || "Категория"}
         </Badge>
       </Box>
 
-      {/* Текст (200x118) */}
       <Stack w={200} h={118} p={12} gap={4} mt={8}>
         <Text
           style={{ fontFamily: "Roboto, sans-serif" }}
@@ -55,14 +65,14 @@ function CardItem({
           lh="24px"
           lineClamp={1}
         >
-          {card.title}
+          {title || "Название товара"}
         </Text>
 
         <Text fw={600} fz="md" lh="140%">
-          {card.price}
+          {price || "Цена"}
         </Text>
 
-        {card.needsWork && (
+        {needsRevision && (
           <Badge
             color="orange"
             variant="light"

@@ -1,11 +1,11 @@
 import { Select } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
-import type { DropDownItem } from "@/types";
+import type { DropDownItemType } from "@/types";
 
 function DropDown({
   data = [{ value: "new", label: "По новизне (сначала новые)" }],
 }: {
-  data?: DropDownItem[];
+  data?: DropDownItemType[];
 }) {
   return (
     <Select
