@@ -1,5 +1,6 @@
 import { Pagination } from "@mantine/core";
 import type { PaginationType } from "@/types";
+import classes from "./Pagination.module.css";
 
 const PaginationComponent = ({ total, page, onChange }: PaginationType) => {
   return (
@@ -7,15 +8,7 @@ const PaginationComponent = ({ total, page, onChange }: PaginationType) => {
       total={total}
       value={page}
       onChange={onChange}
-      size="sm"
-      styles={{
-        control: {
-          fontFamily: "Roboto",
-          fontWeight: 400,
-          fontSize: "14px",
-          lineHeight: "22px",
-        },
-      }}
+      classNames={{ control: classes.myControl }}
     />
   );
 };

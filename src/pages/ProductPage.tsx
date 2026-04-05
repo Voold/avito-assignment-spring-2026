@@ -22,20 +22,20 @@ function ProductPage() {
       </Center>
     );
 
-  console.log(data);
-
   return (
-    <Box w={1399} mx="auto" p="md" style={{ overflowX: "hidden" }}>
-      {" "}
+    <Box
+      w="100%"
+      maw={1399}
+      style={{ overflowX: "hidden", margin: "0 auto", padding: "32px" }}
+    >
       <ProductHeader
-        item={data}
+        id={Number(id)}
         title={data.title}
         price={data.price}
         publishedDate={data.createdAt}
         editedDate={data.updatedAt}
       />
-
-      <Divider my={32} color="#E0E0E0" w={1335} />
+      <Divider color="#E0E0E0" w="100%" style={{ margin: "32px 0" }} />
       <ProductMainInfo
         needsRevision={data.needsRevision || false}
         item={data}

@@ -4,7 +4,7 @@ import type { GetItemsQueryParams } from "@/types";
 interface FiltersState {
   params: GetItemsQueryParams;
   setParams: (newParams: Partial<GetItemsQueryParams>) => void;
-  resetParams: () => void;
+  resetParams: (overrides?: Partial<GetItemsQueryParams>) => void;
 }
 
 const defaultParams: GetItemsQueryParams = {
@@ -16,5 +16,6 @@ export const useFiltersStore = create<FiltersState>((set) => ({
   params: defaultParams,
   setParams: (newParams) =>
     set((state) => ({ params: { ...state.params, ...newParams } })),
-  resetParams: () => set({ params: defaultParams }),
+  resetParams: (overrides = {}) =>
+    set({ params: { ...defaultParams, ...overrides } }),
 }));

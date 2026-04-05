@@ -11,12 +11,33 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 
 import { MantineProvider, createTheme } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
+import "@mantine/notifications/styles.css";
 import "./styles/index.css";
 
 const theme = createTheme({
   fontFamily: "Inter, sans-serif",
   headings: {
     fontFamily: "Inter, sans-serif",
+  },
+  components: {
+    Text: {
+      defaultProps: {
+        style: {
+          textBoxTrim: "none",
+          textBoxEdge: "initial",
+        },
+      },
+    },
+    Badge: {
+      styles: {
+        label: {
+          textBoxTrim: "none",
+          textBoxEdge: "initial",
+          overflow: "visible",
+        },
+      },
+    },
   },
 });
 
@@ -34,6 +55,7 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <MantineProvider theme={theme}>
         <App />
+        <Notifications position="top-right" w={300} limit={2} />
       </MantineProvider>
     </BrowserRouter>
   </QueryClientProvider>,

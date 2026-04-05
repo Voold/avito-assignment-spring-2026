@@ -1,5 +1,5 @@
 import { api } from "./instance";
-import { ENDPOINTS } from "@/config/endpoints";
+import { ENDPOINTS } from "@/config/";
 import type {
   Item,
   ItemsGetOut,
@@ -8,7 +8,6 @@ import type {
 } from "@/types";
 
 export const itemsService = {
-
   getAll: async (params?: GetItemsQueryParams, signal?: AbortSignal) => {
     const { data } = await api.get<ItemsGetOut>(ENDPOINTS.getItems(), {
       params,
@@ -18,7 +17,7 @@ export const itemsService = {
   },
 
   getById: async (id: number, signal?: AbortSignal) => {
-    const { data } = await api.get<ItemsGetOut>(ENDPOINTS.getItem(id), {
+    const { data } = await api.get<Item>(ENDPOINTS.getItem(id), {
       signal,
     });
     return data;

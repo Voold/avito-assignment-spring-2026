@@ -41,6 +41,8 @@ export type ItemParams =
   | ElectronicsItemParams;
 
 export interface Item {
+  needsRevision: boolean;
+  updatedAt: string;
   id: number;
   category: Category;
   title: string;
@@ -70,6 +72,13 @@ export interface GetItemsQueryParams {
   skip?: number;
   needsRevision?: boolean;
   categories?: string; // Передаем через запятую
-  sortColumn?: "title" | "createdAt";
+  sortColumn?: "title" | "createdAt" | "price";
   sortDirection?: "asc" | "desc";
 }
+
+export type EditFormData = Omit<ItemUpdateIn, "price" | "category"> & {
+  price?: number | string;
+  category?: Category | "";
+};
+
+export type RequiredFieldType = "category" | "title" | "price";

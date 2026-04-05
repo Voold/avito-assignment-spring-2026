@@ -22,50 +22,50 @@ export const ProductMainInfo = ({ item, needsRevision }: Props) => {
   if (!item.description) missingFields.push("Описание");
 
   return (
-    <Flex
-      gap={40}
-      direction={{ base: "column", md: "row" }}
-      style={{ width: "100%" }}
-    >
+    <Flex gap={32} style={{ width: "100%" }}>
       <Image
         src={cardPlaceholder}
         alt={item.title}
         style={{
           width: "100%",
-          maxWidth: "512px",
-          height: "462px",
+          maxWidth: "480px",
+          height: "360px",
           borderRadius: "12px",
           objectFit: "cover",
         }}
       />
 
-      <Box style={{ flex: 1 }}>
+      <Box style={{ width: "100%" }}>
         {needsRevision && (
           <Box
             mb={24}
             p={16}
             style={{
               backgroundColor: "rgba(255, 146, 0, 0.05)",
-              border: "1px solid #FF9200",
               borderRadius: "8px",
               display: "flex",
               gap: "12px",
+              width: "100%",
+              maxWidth: "512px",
+
+              boxShadow: "0px 6px 16px 0px rgba(0, 0, 0, 0.12)",
             }}
           >
             <Center
               style={{
-                minWidth: "24px",
-                height: "24px",
+                minWidth: "18px",
+                height: "18px",
+                fontSize: "12px",
                 backgroundColor: "#FF9200",
                 color: "white",
                 borderRadius: "50%",
-                fontWeight: 700,
+                fontWeight: 600,
               }}
             >
               !
             </Center>
             <Stack gap={4}>
-              <Text fw={600} size="md" c="#FF9200">
+              <Text fw={600} size="md" c="#000000">
                 Требуются доработки
               </Text>
 
@@ -81,7 +81,7 @@ export const ProductMainInfo = ({ item, needsRevision }: Props) => {
           </Box>
         )}
 
-        <Text size="xl" fw={600} mb={16} style={{ fontFamily: "inherit" }}>
+        <Text fw={600} mb={16} style={{ fontSize: "20px" }}>
           Характеристики
         </Text>
 
@@ -89,26 +89,22 @@ export const ProductMainInfo = ({ item, needsRevision }: Props) => {
           style={{
             display: "grid",
             gridTemplateColumns: "150px 1fr",
-            rowGap: "12px",
+            columnGap: "10px",
+            rowGap: "10px",
             alignItems: "center",
           }}
         >
-          <Text c="dimmed" size="sm">
-            Категория
-          </Text>
-          <Text size="sm">
-            {category === "auto"
-              ? "Авто"
-              : category === "real_estate"
-                ? "Недвижимость"
-                : "Электроника"}
-          </Text>
-
           {Object.entries(params).map(([key, value]) => {
             if (!value) return null;
             return (
               <React.Fragment key={key}>
-                <Text c="dimmed" size="sm">
+                <Text
+                  c="dimmed"
+                  size="sm"
+                  style={{
+                    fontWeight: 600,
+                  }}
+                >
                   {LABEL_MAP[key] || key}
                 </Text>
                 <Text size="sm">

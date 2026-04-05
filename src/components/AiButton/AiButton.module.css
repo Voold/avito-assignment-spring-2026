@@ -1,0 +1,49 @@
+.popover {
+  width: 400px;
+  max-width: 400px;
+  max-height: 300px;
+  overflow: auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.successTitle {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--mantine-color-text);
+}
+
+.textContent {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  white-space: pre-wrap;
+  color: var(--mantine-color-text);
+}
+
+.errorTitle {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: #c00f0c;
+}
+
+.errorText {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--mantine-color-text);
+}

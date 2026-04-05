@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { itemsService } from "@/api/items.service";
 import { useFiltersStore } from "@/store/useFiltersStore";
-import type { ItemUpdateIn } from "@/types";
+import type { ItemUpdateIn, Item } from "@/types";
 
 // Хук для получения списка
 export const useItemsList = () => {
@@ -12,16 +12,25 @@ export const useItemsList = () => {
     queryKey: ["items", params],
     // queryFn принимает объект, из которого мы достаем signal
     queryFn: ({ signal }) => itemsService.getAll(params, signal),
-    placeholderData: (previousData) => previousData, // чтобы UI не прыгал при пагинации
   });
 };
 
 // Хук для получения одного элемента
-export const useItemDetails = (id: number) => {
+type ItemDetailsQueryOptions = {
+  enabled?: boolean;
+  onSuccess?: (data: Item) => void;
+  [key: string]: unknown;
+};
+
+export const useItemDetails = (
+  id: number,
+  options?: ItemDetailsQueryOptions,
+) => {
   return useQuery({
     queryKey: ["item", id],
     queryFn: ({ signal }) => itemsService.getById(id, signal),
-    enabled: !!id, // запрос не пойдет, если id undefined/0
+    enabled: options?.enabled ?? !!id,
+    ...options,
   });
 };
 
