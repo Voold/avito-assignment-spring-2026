@@ -7,7 +7,7 @@ import { Item } from "./src/types.ts";
 import { ItemsGetInQuerySchema, ItemUpdateInSchema } from "./src/validation.ts";
 import { treeifyError, ZodError } from "zod";
 import { doesItemNeedRevision } from "./src/utils.ts";
-import { gigaChatService } from "./src/gigachat.service.ts";
+import axios from "axios";
 
 const ITEMS = items as Item[];
 
@@ -16,14 +16,7 @@ const fastify = Fastify({
 });
 
 await fastify.register(cors, {
-  origin: [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://127.0.0.1:8080",
-    "http://localhost:8080",
-    "http://frontend:80",
-    "http://host.docker.internal:5173",
-  ],
+  origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
   methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 });
@@ -110,8 +103,7 @@ fastify.get<ItemsGetRequest>("/items", (request) => {
             new Date(item1.createdAt).valueOf() -
             new Date(item2.createdAt).valueOf();
         } else if (sortColumn === "price") {
-          // Добавляем сортировку по цене
-          comparisonValue = item1.price - item2.price;
+          comparisonValue = (item1.price ?? 0) - (item2.price ?? 0);
         }
 
         return (sortDirection === "desc" ? -1 : 1) * comparisonValue;
@@ -177,22 +169,26 @@ fastify.put<ItemUpdateRequest>("/items/:id", (request, reply) => {
   }
 });
 
+// Мой прокси на гигачат, чтобы минимально давать доступ к чувствительным токенам,
+// давая достук к сервису - максимальному количеству людей (Да, я не только фронт, еще чуть чуть бэк и девопс)
 fastify.post<{
   Body: {
     messages: { role: string; content: string }[];
   };
 }>("/ai/chat", async (request, reply) => {
   try {
-    const answer = await gigaChatService.sendMessage(request.body.messages);
+    const proxyUrl =
+      process.env.PROXY_URL || "https://avito.voold.online/ai/chat";
 
-    return { success: true, answer };
+    const response = await axios.post(proxyUrl, {
+      messages: request.body.messages,
+    });
+
+    // Прокси вернет { success: true, answer: { role: 'assistant', content: '...' } }
+    return response.data;
   } catch (error) {
-    if (error instanceof ZodError) {
-      reply.status(400).send({ success: false, error: treeifyError(error) });
-      return;
-    }
-
-    throw error;
+    fastify.log.error("Ошибка при обращении к AI-прокси " + error);
+    reply.status(500).send({ success: false, error: "Proxy error" });
   }
 });
 
