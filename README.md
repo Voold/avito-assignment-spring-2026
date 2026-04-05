@@ -32,6 +32,7 @@
 - **Performance & UX:**
   - Реализовано прерывание (Abort) активных запросов при переходе между страницами (через TanStack Query), что экономит трафик и ресурсы сервера.
   - Использование React Compiler для автоматической оптимизации рендеринга.
+  - Реализована система смены темы.
     <br>
 
 ## /ᐠ - ˕ -マ Стэк технологий
@@ -70,7 +71,7 @@ pnpm install
 - **Backend:**
 
 ```bash
-  pnpm --filter "./apps/backend" dev
+  pnpm --filter "./apps/backend" start
 ```
 
 - **Frontend:**

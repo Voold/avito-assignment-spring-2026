@@ -41,7 +41,7 @@ function CardItem({
         cursor: "pointer",
         display: "flex",
         flexDirection: isList ? "row" : "column",
-        border: "1px solid #F0F0F0",
+        border: "1px solid var(--app-border-card)",
       }}
     >
       <Box
@@ -124,7 +124,7 @@ function CardItem({
             fontWeight: 600,
             fontSize: "16px",
             lineHeight: "140%",
-            color: "#00000073",
+            color: "var(--app-text-color)",
           }}
         >
           {price || "Цена"}
@@ -132,7 +132,7 @@ function CardItem({
 
         {needsRevision && (
           <Badge
-            color="#F9F1E6"
+            color="var(--app-dropdown-warning-border)"
             variant="light"
             radius="8px"
             size="lg"
@@ -143,7 +143,7 @@ function CardItem({
                 fontFamily: "Roboto",
                 fontWeight: 400,
                 fontSize: "14px",
-                color: "#FAAD14",
+                color: "var(--app-badge-warning-text)",
               },
               root: {
                 marginLeft: "2px",
@@ -155,8 +155,8 @@ function CardItem({
                 w={6}
                 h={6}
                 style={{
-                  margin: "0 2px",
-                  backgroundColor: "#FAAD14",
+                  margin: "-2px 2px 0",
+                  backgroundColor: "#ffac07",
                   borderRadius: "50%",
                 }}
               />

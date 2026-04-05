@@ -65,7 +65,7 @@ export const ProductMainInfo = ({ item, needsRevision }: Props) => {
               !
             </Center>
             <Stack gap={4}>
-              <Text fw={600} size="md" c="#000000">
+              <Text fw={600} size="md" c="var(--app-text-primary)">
                 Требуются доработки
               </Text>
 

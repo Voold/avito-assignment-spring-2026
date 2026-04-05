@@ -45,7 +45,7 @@ function Search({ placeholder }: { placeholder?: string }) {
       styles={{
         input: {
           padding: "12px",
-          backgroundColor: "#f6f6f8",
+          backgroundColor: "var(--app-bg-search)",
           border: "none",
           height: "32px",
           minHeight: "32px",

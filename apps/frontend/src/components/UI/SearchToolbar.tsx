@@ -23,7 +23,7 @@ function SearchToolbar({
       mt={16}
       gap={16}
       w="100%"
-      bg="#ffffff"
+      bg="var(--app-bg-secondary-ads)"
       wrap="nowrap"
       style={{
         padding: "12px",

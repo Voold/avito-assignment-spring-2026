@@ -13,7 +13,7 @@ const ListViewButton = ({ viewMode, onChange }: ListViewButtonProps) => {
       style={{
         borderRadius: "4px",
         overflow: "hidden",
-        backgroundColor: "#f4f4f6",
+        backgroundColor: "var(--app-bg-search)",
         marginLeft: "8px",
       }}
     >
@@ -31,11 +31,17 @@ const ListViewButton = ({ viewMode, onChange }: ListViewButtonProps) => {
       >
         <IconLayoutGrid
           size={18}
-          color={viewMode === "grid" ? "#1890FF" : "#000000D9"}
+          color={viewMode === "grid" ? "#1890FF" : "var(--app-text-primary)"}
         />
       </UnstyledButton>
 
-      <Divider orientation="vertical" size="sm" h={28} my={2} color="#ffffff" />
+      <Divider
+        orientation="vertical"
+        size="sm"
+        h={28}
+        my={2}
+        color="#var(--app-bg-ads)"
+      />
 
       <UnstyledButton
         w={36}
@@ -51,7 +57,7 @@ const ListViewButton = ({ viewMode, onChange }: ListViewButtonProps) => {
       >
         <IconList
           size={18}
-          color={viewMode === "list" ? "#1890FF" : "#000000D9"}
+          color={viewMode === "list" ? "#1890FF" : "var(--app-text-primary)"}
         />
       </UnstyledButton>
     </Group>

@@ -1,0 +1,31 @@
+:root {
+  --app-bg-search: #f6f6f8;
+  --app-bg-secondary-ads: #ffffff;
+  --app-bg-ads: #f7f5f8;
+  --app-border-card: #f0f0f0;
+  --app-border-badge: #d9d9d9;
+  --app-text-primary: rgba(0, 0, 0, 0.85);
+  --app-text-muted: #00000073;
+  --app-text-color: #00000073;
+  --app-badge-warning-bg: #f9f1e6;
+  --app-badge-warning-text: #faad14;
+  --app-dropdown-warning-border: #d07b0c25;
+  --app-icon-bg: rgba(0, 0, 0, 0.25);
+  --app-card-bg: #ffffff;
+}
+
+[data-mantine-color-scheme="dark"] {
+  --app-bg-search: #2c2e33;
+  --app-bg-secondary-ads: #121314;
+  --app-text-color: #ffffffed;
+  --app-bg-ads: #252627;
+  --app-border-card: #373a40;
+  --app-border-badge: #4a4d52;
+  --app-text-primary: rgba(255, 255, 255, 0.85);
+  --app-text-muted: rgba(255, 255, 255, 0.5);
+  --app-badge-warning-bg: #3b2b14;
+  --app-badge-warning-text: #ffc043;
+  --app-dropdown-warning-border: #d07b0c2d;
+  --app-icon-bg: rgba(255, 255, 255, 0.25);
+  --app-card-bg: #121314;
+}

@@ -57,7 +57,11 @@ const Filter = () => {
 
   return (
     <Stack w={256} gap={10}>
-      <Paper w={256} p={16}>
+      <Paper
+        w={256}
+        p={16}
+        style={{ backgroundColor: "var(--app-bg-secondary-ads)" }}
+      >
         <Text
           mb={10}
           style={{
@@ -135,7 +139,7 @@ const Filter = () => {
                 border: "9px solid #ffffff",
               },
               track: {
-                backgroundColor: "#bebebe",
+                backgroundColor: "var(--app-bg-search)",
               },
             }}
             onChange={(e) => handleNeedsRevisionChange(e.currentTarget.checked)}
@@ -147,7 +151,11 @@ const Filter = () => {
         w={256}
         h={41}
         display="flex"
-        style={{ justifyContent: "center", alignItems: "center" }}
+        style={{
+          backgroundColor: "var(--app-bg-secondary-ads)",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
         <UnstyledButton
           onClick={handleResetFilters}
@@ -163,7 +171,7 @@ const Filter = () => {
               fontWeight: 400,
               fontSize: "14px",
               lineHeight: "100%",
-              color: hasActiveFilters ? "black" : "gray",
+              color: hasActiveFilters ? "var(--app-text-primary)" : "gray",
             }}
           >
             Сбросить фильтры

@@ -4,6 +4,7 @@ import { AppShell } from "@mantine/core";
 import ProductPage from "./pages/ProductPage";
 import { EditProductPage } from "./pages/EditProductPage";
 import AiChatModal from "./components/AiChatModal";
+import { ThemeToggle } from "./components/ThemeToggler";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/ads/:id" element={<ProductPage />} />
         <Route path="/ads/:id/edit" element={<EditProductPage />} />
       </Routes>
+      <ThemeToggle/>
       <AiChatModal />
     </AppShell>
   );

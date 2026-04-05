@@ -1,16 +1,16 @@
 .myControl {
   font-family: Roboto, sans-serif;
-  background-color: #ffffff;
+  background-color: var(--app-bg-secondary-ads);
   border-radius: 8px;
 }
 
 .myControl[data-active] {
   border-color: #1890ff !important;
   color: #1890ff;
-  background-color: #ffffff;
+  background-color: var(--app-bg-secondary-ads);
   border-radius: 8px;
 }
 
 .myControl[data-active]:hover {
-  background-color: #ffffff;
+  background-color: var(--app-bg-secondary-ads);
 }

@@ -12,7 +12,7 @@ import { useEffect } from "react";
 
 export function AdsPage() {
   useEffect(() => {
-    document.body.style.backgroundColor = "#f7f5f8";
+    document.body.style.backgroundColor = "var(--app-bg-ads)";
 
     return () => {
       document.body.style.backgroundColor = "";

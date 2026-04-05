@@ -64,7 +64,7 @@ function DropDown({ data = [] }: { data?: DropDownItemType[] }) {
       rightSectionWidth={38}
       styles={{
         input: {
-          border: "4px solid #F4F4F6",
+          border: "4px solid var(--app-border-badge)",
           paddingLeft: "12px",
           paddingRight: "34px",
           height: "32px",
